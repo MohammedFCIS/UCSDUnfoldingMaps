@@ -123,6 +123,17 @@ public class EarthquakeCityMap extends PApplet {
 		textAlign(CENTER);
 		fill(50);
 		text("Earthquake Key", 100, 70);
+		
+		//Set Red Legend
+		fill(255, 0, 0);
+		ellipse(50, 110, 15, 15);
+		
+		//Set Red Legend Text
+		textSize(12);
+		textAlign(LEFT);
+		fill(50);
+		text("5.0+ Magnitude", 80, 115);
+		
 	
 	}
 }
