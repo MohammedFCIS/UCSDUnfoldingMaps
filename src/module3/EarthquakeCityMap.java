@@ -71,17 +71,7 @@ public class EarthquakeCityMap extends PApplet {
 
 	    //Use provided parser to collect properties for each earthquake
 	    //PointFeatures have a getLocation method
-	    List<PointFeature> earthquakes = ParseFeed.parseEarthquake(this, earthquakesURL);
-	    
-	    // These print statements show you (1) all of the relevant properties 
-	    // in the features, and (2) how to get one property and use it
-	    if (earthquakes.size() > 0) {
-	    	PointFeature f = earthquakes.get(0);
-	    	System.out.println(f.getProperties());
-	    	Object magObj = f.getProperty("magnitude");
-	    	float mag = Float.parseFloat(magObj.toString());
-	    	// PointFeatures also have a getLocation method
-	    }
+	    List<PointFeature> earthquakes = ParseFeed.parseEarthquake(this, earthquakesURL);	 
 	    int markerColor = 0;
 	    float markerRadius = 0.0f;
 	    for(PointFeature feature: earthquakes){
@@ -103,12 +93,6 @@ public class EarthquakeCityMap extends PApplet {
 	    	simplePointMarker.setRadius(markerRadius);
 	    	map.addMarker(simplePointMarker);
 	    }
-	    
-	    // Here is an example of how to use Processing's color method to generate 
-	    // an int that represents the color yellow.  
-	    int yellow = color(255, 255, 0);
-	    
-	    //TODO: Add code here as appropriate
 	}
 		
 	// A suggested helper method that takes in an earthquake feature and 
