@@ -117,6 +117,12 @@ public class EarthquakeCityMap extends PApplet {
 	{	//Set the key mar area
 		fill(250, 243, 243);
 		rect(30, 50, 150, 300, 24);
+		
+		//Set the title
+		textSize(14);
+		textAlign(CENTER);
+		fill(50);
+		text("Earthquake Key", 100, 70);
 	
 	}
 }
