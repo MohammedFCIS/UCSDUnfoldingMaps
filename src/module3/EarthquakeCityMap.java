@@ -24,7 +24,7 @@ import parsing.ParseFeed;
 /** EarthquakeCityMap
  * An application with an interactive map displaying earthquake data.
  * Author: UC San Diego Intermediate Software Development MOOC team
- * @author Your name here
+ * @author Mohammed Ali
  * Date: July 17, 2015
  * */
 public class EarthquakeCityMap extends PApplet {
@@ -81,6 +81,11 @@ public class EarthquakeCityMap extends PApplet {
 	    	Object magObj = f.getProperty("magnitude");
 	    	float mag = Float.parseFloat(magObj.toString());
 	    	// PointFeatures also have a getLocation method
+	    }
+	    for(PointFeature feature: earthquakes){
+	    	SimplePointMarker simplePointMarker = 
+	    			new SimplePointMarker(feature.getLocation(), feature.properties);
+	    	map.addMarker(simplePointMarker);
 	    }
 	    
 	    // Here is an example of how to use Processing's color method to generate 
