@@ -115,7 +115,7 @@ public class EarthquakeCityMap extends PApplet {
 	// TODO: Implement this method to draw the key
 	private void addKey() 
 	{	
-		// Remember you can use Processing's graphics methods here
+		rect(30, 50, 150, 300, 24);
 	
 	}
 }
