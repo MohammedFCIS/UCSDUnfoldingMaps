@@ -134,6 +134,16 @@ public class EarthquakeCityMap extends PApplet {
 		fill(50);
 		text("5.0+ Magnitude", 80, 115);
 		
+		//Set Yellow Legend
+		fill(255, 255, 0);
+		ellipse(50, 140, 10, 10);
+
+		// Set Yellow Legend Text
+		textSize(12);
+		textAlign(LEFT);
+		fill(50);
+		text("4.0+ Magnitude", 80, 145);
+		
 	
 	}
 }
