@@ -82,9 +82,20 @@ public class EarthquakeCityMap extends PApplet {
 	    	float mag = Float.parseFloat(magObj.toString());
 	    	// PointFeatures also have a getLocation method
 	    }
+	    int markerColor = 0;
 	    for(PointFeature feature: earthquakes){
 	    	SimplePointMarker simplePointMarker = 
 	    			new SimplePointMarker(feature.getLocation(), feature.properties);
+	    	Object magnitudeObj = feature.getProperty("magnitude");
+	    	float magnitude = Float.parseFloat(magnitudeObj.toString());
+	    	if(magnitude <THRESHOLD_LIGHT){
+	    		markerColor = color(0, 0, 255);
+	    	}else if (magnitude < THRESHOLD_MODERATE){
+	    		markerColor = color(255, 255, 0);
+	    	}else{
+	    		markerColor = color(255, 0, 0);
+	    	}
+	    	simplePointMarker.setColor(markerColor);
 	    	map.addMarker(simplePointMarker);
 	    }
 	    
