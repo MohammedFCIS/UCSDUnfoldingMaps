@@ -114,7 +114,8 @@ public class EarthquakeCityMap extends PApplet {
 	// helper method to draw key in GUI
 	// TODO: Implement this method to draw the key
 	private void addKey() 
-	{	
+	{	//Set the key mar area
+		fill(250, 243, 243);
 		rect(30, 50, 150, 300, 24);
 	
 	}
