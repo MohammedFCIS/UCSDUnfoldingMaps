@@ -182,7 +182,23 @@ public class EarthquakeCityMap extends PApplet {
 	// And LandQuakeMarkers have a "country" property set.
 	private void printQuakes() 
 	{
-		// TODO: Implement this method
+		int numOfQuakesOfOcean = quakeMarkers.size();		
+		for(Marker country:countryMarkers){
+			int numOfQuakes = 0;
+			for(Marker quake:quakeMarkers){
+				if(quake.getClass() == LandQuakeMarker.class){
+					if(quake.getProperty("country").
+							equals(country.getProperty("name"))){
+						numOfQuakes ++;
+					}							
+				}
+			}
+			if(numOfQuakes > 0){
+				System.out.println(country.getProperty("name") +" : " + numOfQuakes);
+				numOfQuakesOfOcean -= numOfQuakes;
+			}
+		}
+		System.out.println("OCEAN QUAKES: " + numOfQuakesOfOcean);
 	}
 	
 	
