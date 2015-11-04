@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import module6.CommonMarker;
+import module6.EarthquakeMarker;
 import de.fhpotsdam.unfolding.UnfoldingMap;
 import de.fhpotsdam.unfolding.data.Feature;
 import de.fhpotsdam.unfolding.data.GeoJSONReader;
@@ -168,11 +169,71 @@ public class EarthquakeCityMap extends PApplet {
 	@Override
 	public void mouseClicked()
 	{
-		// TODO: Implement this method
-		// Hint: You probably want a helper method or two to keep this code
-		// from getting too long/disorganized
+		if (lastClicked != null) {
+			unhideMarkers();
+			lastClicked = null;
+		}
+		else if (lastClicked == null) 
+		{
+			checkEarthquakesForClick();
+			if (lastClicked == null) {
+				checkCitiesForClick();
+			}
+		}
+	}
+	// Helper method that will check if a city marker was clicked on
+	// and respond appropriately
+	private void checkCitiesForClick()
+	{
+		if (lastClicked != null) return;
+		// Loop over the earthquake markers to see if one of them is selected
+		for (Marker marker : cityMarkers) {
+			if (!marker.isHidden() && marker.isInside(map, mouseX, mouseY)) {
+				lastClicked = (CommonMarker)marker;
+				// Hide all the other earthquakes and hide
+				for (Marker mhide : cityMarkers) {
+					if (mhide != lastClicked) {
+						mhide.setHidden(true);
+					}
+				}
+				for (Marker mhide : quakeMarkers) {
+					EarthquakeMarker quakeMarker = (EarthquakeMarker)mhide;
+					if (quakeMarker.getDistanceTo(marker.getLocation()) 
+							> quakeMarker.threatCircle()) {
+						quakeMarker.setHidden(true);
+					}
+				}
+				return;
+			}
+		}		
 	}
 	
+	// Helper method that will check if an earthquake marker was clicked on
+	// and respond appropriately
+	private void checkEarthquakesForClick()
+	{
+		if (lastClicked != null) return;
+		// Loop over the earthquake markers to see if one of them is selected
+		for (Marker m : quakeMarkers) {
+			EarthquakeMarker marker = (EarthquakeMarker)m;
+			if (!marker.isHidden() && marker.isInside(map, mouseX, mouseY)) {
+				lastClicked = marker;
+				// Hide all the other earthquakes and hide
+				for (Marker mhide : quakeMarkers) {
+					if (mhide != lastClicked) {
+						mhide.setHidden(true);
+					}
+				}
+				for (Marker mhide : cityMarkers) {
+					if (mhide.getDistanceTo(marker.getLocation()) 
+							> marker.threatCircle()) {
+						mhide.setHidden(true);
+					}
+				}
+				return;
+			}
+		}
+	}
 	
 	// loop over and unhide all markers
 	private void unhideMarkers() {
