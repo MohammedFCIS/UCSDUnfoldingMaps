@@ -35,7 +35,8 @@ public class CityMarker extends CommonMarker {
 	/**
 	 * Implementation of method to draw marker on the map.
 	 */
-	public void draw(PGraphics pg, float x, float y) {
+	@Override
+	public void drawMarker(PGraphics pg, float x, float y) {
 		// Save previous drawing style
 		pg.pushStyle();
 		
@@ -74,9 +75,9 @@ public class CityMarker extends CommonMarker {
 	}
 
 
-	@Override
+	/*@Override
 	public void drawMarker(PGraphics pg, float x, float y) {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 }
