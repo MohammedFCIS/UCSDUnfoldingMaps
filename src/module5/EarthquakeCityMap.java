@@ -3,8 +3,8 @@ package module5;
 import java.util.ArrayList;
 import java.util.List;
 
-import module6.CommonMarker;
-import module6.EarthquakeMarker;
+import module5.CommonMarker;
+import module5.EarthquakeMarker;
 import de.fhpotsdam.unfolding.UnfoldingMap;
 import de.fhpotsdam.unfolding.data.Feature;
 import de.fhpotsdam.unfolding.data.GeoJSONReader;
