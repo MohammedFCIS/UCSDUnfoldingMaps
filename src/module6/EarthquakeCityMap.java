@@ -409,5 +409,13 @@ public class EarthquakeCityMap extends PApplet {
 		}
 		return false;
 	}
+	private void sortAndPrint(int numToPrint){
+		EarthquakeMarker[] markers = (EarthquakeMarker[]) quakeMarkers.toArray();
+		Arrays.sort(markers);
+		int endOfLoop = (markers.length >= numToPrint)? markers.length - 1: numToPrint;
+		for(EarthquakeMarker marker:markers){
+			System.out.println(marker);
+		}
+	}
 
 }
